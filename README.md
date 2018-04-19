@@ -1,4 +1,4 @@
-# ikan_comic
+# ikan_comic(http://www.vovking.cc/comic/index.html)
 # 前言
  之前爬风之动漫漫画太少就放弃了
  后爬的漫画柜提供的网页

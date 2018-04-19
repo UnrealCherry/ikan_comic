@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body style="background: #EEECE1;margin: 0;padding: 0">
+<div id="app">
+  <div v-for="(a,index) in q.a">{{q.a}}</div>
+</div>
+
+</body>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script>
+
+  var g=[]
+  console.log(g.length)
+  if(g.length){
+    console.log('asdadadasdad')
+  }
+  g[4]=5
+  g[2]=3
+  console.log(g)
+var c=new Promise(function (r,x) {
+  console.log('fff')
+  r()
+})
+
+if([]){
+  console.log(1111111111)
+}
+var q =123456
+console.log(q.length)
+c.then(function () {
+  console.log(this)
+  console.log('2')
+})
+c.then(function () {
+  console.log('2')
+})
+
+  var app=new Vue({
+    el:'#app',
+    data(){
+      return {
+        q:{a:1}
+      }
+    }
+  })
+</script>
+<style>
+
+
+</style>
+</html>

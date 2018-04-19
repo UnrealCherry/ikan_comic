@@ -28,7 +28,9 @@
 >>> * pubic.js 风之动漫爬虫封装函数(暂时不使用,后期两网站合并)
  #### 前端
 > src
->> pages
+>> * login  登录页面
+>> * author 作者页面
+>> * pages 组件
 >>> * book.vue book组件
 >>> * history.vue history页面
 >>> * home.vue 首页

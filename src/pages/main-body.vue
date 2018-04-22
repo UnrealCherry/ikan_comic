@@ -11,15 +11,13 @@
         <img src="static/timg.gif"  v-if="!comic_pages_imgs[index]"   style="width: 100%">
       </div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination swiper-pagination-fraction" style="color: white"><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">{{imgs_len}}</span></div>
-    <!-- Add Arrows -->
   </div>
   </el-col>
   <transition name="fade">
     <open-option :pages="pages"  :max="imgs_len"  :next="next"  :previou="previou" :word="this.$route.query.word"  :title2="this.$route.query.title" :id="id" v-if="option_show&&q" :title="this.$route.path.replace('/info/','')" @sendPages="tab_pages" @close="open_option" ></open-option>
   </transition>
 </div>
+    <div class="tags" v-if="imgs_len">{{$route.path.replace('/info/','')}} {{pages}}/{{imgs_len}} {{d.getHours()}}:{{d.getMinutes()}} </div>
   </div>
 </template>
 
@@ -45,12 +43,11 @@
         }
       },
       mounted(){
-/*        this.mc_event=new Hammer(this.$refs.wrapper);
-        this.swipeLeft(this.mc_event)
-        this.swipeRight(this.mc_event)*/
+
       },
       data(){
         return{
+          d:new Date(),
           cache:'',
           id:this.$route.query.id,
           next:2,
@@ -147,24 +144,6 @@
           let obj={title:r.params.id,id:r.query.id,path:r.fullPath,word:r.query.word}
           that.$store.commit('save_history',obj)
         },
-        swipeLeft:function (ele) {
-          ele.on('swipeleft',(ev)=>{
-            if(this.pages){
-              this.pages++
-
-            }
-            console.log('left')
-          })
-        },
-        swipeRight:function (ele) {
-          ele.on('swiperight',(ev)=>{
-            if(this.pages>1){
-              this.pages--
-            }
-            console.log('right')
-          })
-
-        },
         open_option:function () {
          this.option_show=!this.option_show
         },
@@ -173,14 +152,11 @@
           this.swiper = new Swiper('.swiper-container', {
             shortSwipes:true,
             watchSlidesProgress : true,
+            autoHeight: true,
             on: {
               slideChange: function () {
                 that.save_history(this.activeIndex+1)
               },
-            },
-            pagination: {
-              el: '.swiper-pagination',
-              type: 'fraction',
             },
             navigation: {
               nextEl: '.swiper-button-next',
@@ -226,6 +202,15 @@
 </script>
 
 <style scoped>
+  .tags{
+    pointer-events: auto;
+    position: absolute;
+    z-index: 9999;
+    bottom: 0;
+    right: 20px;
+    font-size: 18px;
+    color: white;
+  }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }

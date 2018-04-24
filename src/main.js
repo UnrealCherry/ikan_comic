@@ -6,6 +6,8 @@ import Vuex from 'Vuex'
 import axios from 'axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import FastClick from 'fastclick'
+FastClick.attach(document.body);
 Vue.use(ElementUI);
 Vue.use(Vuex)
 Vue.prototype.$axios=axios

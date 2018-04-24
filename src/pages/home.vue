@@ -96,19 +96,22 @@
         })
       },
       init(){
+        this.scroll=new BScroll(this.$refs.scroll,{
+          bounce: false
+        })
         this.swiper = new Swiper('.swiper-container', {
+          observer:true,
           autoplay:true,
+          touchRatio:0.5,
+          updateOnImagesReady : true,
           pagination: {
             el: '.swiper-pagination',
-            dynamicBullets: true,
+            dynamicBullets: true
           },
         });
         this.swiper_1= new Swiper('.swiper-container-1',{
           noSwiping : true
         });
-        this.scroll=new BScroll(this.$refs.scroll,{
-          bounce: false
-        })
       }
     },
       updated(){

@@ -37,7 +37,7 @@
         })
       },
       updated(){
-        if(this. comic_pages_imgs.length==0){
+        if(this.comic_pages_imgs.length==0){
           this.swiper_init()
           this.tab_pages(this.$route.query.p-1)
         }
@@ -153,15 +153,12 @@
             shortSwipes:true,
             watchSlidesProgress : true,
             autoHeight: true,
+            observer:true,
             on: {
               slideChange: function () {
                 that.save_history(this.activeIndex+1)
-              },
-            },
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
+              }
+            }
           });
         },
         once_req:function () {
